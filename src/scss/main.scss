@@ -1,0 +1,59 @@
+.main-wrap {
+    width: 100%;
+    min-height: 100%;
+    background-color: #202666;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// 인덱스 버튼 스타일
+.top-index-wrap {
+    position: absolute;
+    right: 30px;
+    top: -40px;
+    .index-list {
+        display: flex;
+    }
+    .index-list-item {
+        min-width: 80px;
+        height: 40px;
+        background-color: #FFC000;
+        text-align: center;
+        padding: 10px 5px;
+        margin-right: 8px;
+    }
+}
+
+// 표지 스타일
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .hello-text {
+        font-weight: 700;
+        font-size: 54px;
+        color: #fff;
+    }
+    .open-btn-wrap {
+        position: absolute;
+        right: 60px;
+        bottom: 40px;
+        .open-btn {
+            display: inline-block;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.5s;
+            &:hover {
+                transform: translateX(10px);
+            }
+            svg {
+                margin-right: 8px;
+            }
+        }
+    }
+}

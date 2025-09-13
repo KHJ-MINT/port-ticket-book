@@ -1,32 +1,23 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 
 const Header = () => {
     return (
         <header className="header inner">
-            <div className="header-left">
-                <h1 className="title"><Link to={"/"}>시간, 그리고 기록</Link></h1>
+            <div className="go-home">
+                <Link to={"/"}>
+                    <FontAwesomeIcon icon={faHouse} />
+                </Link>
             </div>
-            <div className="header-right">
-                <nav className="nav pc-nav">
-                    <ul>
-                        <li className="nav-item"><Link to={"/calender"} >관람 일정</Link></li>
-                        <li className="nav-item"><Link to={"/"}>관람 후기</Link></li>
-                    </ul>
-                </nav>
-                <button className="login-btn">로그인</button>
-                <div className="m-nav-wrap">
-                    <FontAwesomeIcon icon={faBars} />
-                    <nav className="nav m-nav">
-                    <ul>
-                        <li className="nav-item"><Link to={"/"}>관람 일정</Link></li>
-                        <li className="nav-item"><Link to={"/"}>관람 후기</Link></li>
-                        <li className="nav-item"><Link to={"/"}>로그인</Link></li>
-                    </ul>
-                </nav>
-                </div>
+            <div className="search-wrap">
+                <form action="get" className="search-form">
+                    <div className="search-box">
+                        <input type="text" placeholder="날짜 / 공연 제목 / 출연진 이름으로 검색할 수 있습니다." />
+                    </div>
+                    <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                </form>
             </div>
         </header>
     );

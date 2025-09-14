@@ -1,3 +1,4 @@
+import '../scss/header.scss';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -14,9 +15,9 @@ const Header = () => {
             <div className="search-wrap">
                 <form action="get" className="search-form">
                     <div className="search-box">
-                        <input type="text" placeholder="날짜 / 공연 제목 / 출연진 이름으로 검색할 수 있습니다." />
+                        <input id='search-input' type="text" placeholder="날짜 / 공연 제목 / 출연진 이름으로 검색할 수 있습니다." name='search' />
                     </div>
-                    <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+                    <button id='search-btn' type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>
             </div>
         </header>

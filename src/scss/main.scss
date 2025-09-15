@@ -1,1 +1,141 @@
-// 재 작업 예정
+.main-wrap {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+
+    .left-container {
+        min-width: 400px;
+        max-width: 400px;
+        padding: 20px;
+        background: #1E2A47;
+        border-radius: 20px;
+        color: #E0E0E0;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        &>div {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+        }
+
+        .my-ticketbook-wrap {
+            min-height: 150px;
+
+            .title {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            .my-ticketbook-content-wrap {
+                .my-ticketbook-content {
+                    margin-bottom: 8px;
+                    display: flex;
+                    gap: 8px;
+
+                    .content-text {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
+        .recently-view-wrap {
+            display: flex;
+
+            .poster-wrap {
+                margin-right: 20px;
+
+                .poster-img {
+                    max-width: 160px;
+                    max-height: 230px;
+                    background-color: #d9d9d9;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+
+            .recently-view-info {
+                .title {
+                    font-size: 20px;
+                    font-weight: 700;
+                    margin-bottom: 15px;
+                }
+
+                .info-list-wrap {
+                    &>p {
+                        line-height: 1.4;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                .edit-btn {
+                    border: 1px solid #e0e0e0;
+                    background: #e0e0e0;
+                    color: #212121;
+                    width: 125px;
+                    height: 40px;
+                    font-size: 18px;
+                    transition: 0.5s;
+
+                    &:hover {
+                        background: #FFBF00;
+                        border-color: #FFBF00;
+                    }
+
+                    &>button {
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        cursor: pointer;
+                    }
+                }
+
+            }
+        }
+
+        .menu-wrap .menu-list {
+            .menu-list-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .menu-list-item {
+                    border: 1px solid #e0e0e0;
+                    height: 50px;
+                    cursor: pointer;
+
+                    a {
+                        display: inline-flex;
+                        align-items: center;
+                        width: 100%;
+                        height: 100%;
+                        padding: 10px;
+                    }
+
+                    .icon {
+                        font-size: 20px;
+                        transition: 0.5s;
+                        margin-right: 10px;
+                    }
+
+                    &:hover .icon {
+                        color: #FFBF00;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .right-container {
+        min-width: 985px;
+        padding: 20px;
+        background: #1E2A47;
+        border-radius: 20px;
+    }
+}

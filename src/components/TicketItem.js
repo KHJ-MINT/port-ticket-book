@@ -1,4 +1,6 @@
 import posterImg from '../img/poster.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const TicketItem = () => {
     return (
@@ -11,6 +13,7 @@ const TicketItem = () => {
                     <p className="actors-title">출연진</p>
                     <p className="actors-name">홍광호, 린아, 김용수, 손지수, 이희정</p>
                 </div>
+                <p className="star"><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /></p>
             </div>
             <div className="poster-wrap">
                 <div className="poster-box">

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const ControlPanel = () => {
+const ControlPanel = ({ onOpen }) => {
     return (
         <div className="control-panel-wrap">
             <div className="control-panel-container">
@@ -12,7 +12,7 @@ const ControlPanel = () => {
                     </button>
                 </div>
                 <div className="control-btn add-ticket">
-                    <button type="button" className="add-ticket-btn">
+                    <button type="button" className="add-ticket-btn" onClick={onOpen}>
                         <span className="btn-icon"><FontAwesomeIcon icon={faPlus} /></span>
                         <span className="btn-txt">티켓 추가하기</span>
                     </button>

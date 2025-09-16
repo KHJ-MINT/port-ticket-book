@@ -1,10 +1,10 @@
 import ControlPanel from "./ControlPanel";
 import TicketList from "./TicketList";
 
-const TicketGrid = () => {
+const TicketGrid = ({ onAddTicket }) => {
     return (
         <div className="right-container">
-            <ControlPanel />
+            <ControlPanel onOpen={onAddTicket} />
             <TicketList />
         </div>
     )

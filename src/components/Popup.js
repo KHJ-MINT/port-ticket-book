@@ -5,8 +5,8 @@ const Popup = ({ onClose }) => {
     return (
         <div className="popup-wrap">
             <div className="popup-container">
-                <div className="pop-header">
-                    <span className="current-num">1</span><span className='total-num'>/3</span>
+                <div className="popup-header">
+                    <span className="current-num">1</span><span className="seperate">/</span><span className='total-num'>3</span>
                 </div>
                 <div className="close-btn"><button type="button" onClick={onClose}><FontAwesomeIcon icon={faXmark} /></button></div>
                 <div className="popup-content">
@@ -16,7 +16,7 @@ const Popup = ({ onClose }) => {
                                 <input type="text" className="form-input" name="perform-title" placeholder='공연 제목을 입력하세요.' />
                                 <button className="popup-search-btn"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                             </div>
-                            <div className="form-input-wrap">
+                            <div className="form-info-input-wrap">
                                 <div className="poster-img-wrap"></div>
                                 <div className="content-input-wrap">
                                     <div className="performance-info-wrap">
@@ -39,7 +39,7 @@ const Popup = ({ onClose }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="second-content-wrap">
+                        <div className="second-content-wrap close">
                             <div className="review-star-wrap">
                                 <span className='title'>관람 후기</span>
                                 <span className="review-star"><FontAwesomeIcon icon={faStar} /></span>
@@ -52,7 +52,7 @@ const Popup = ({ onClose }) => {
                                 <textarea name="review" className='review-textarea' placeholder='관람 후기를 작성해주세요.'></textarea>
                             </div>
                         </div>
-                        <div className="third-content-wrap">
+                        <div className="third-content-wrap close">
                             <h6 className="title">관람 추가 정보</h6>
                             <div className="add-review-info-wrap">
                                 <div className="seat-input-wrap">
@@ -78,9 +78,9 @@ const Popup = ({ onClose }) => {
                     </form>
                 </div>
                 <div className="popup-footer">
-                    <div className="pop-btn-wrap">
-                        <button className="prev-btn"><FontAwesomeIcon icon={faChevronLeft} />이전</button>
-                        <button className="next-btn"><FontAwesomeIcon icon={faChevronRight} />다음</button>
+                    <div className="popup-btn-wrap">
+                        <button className="prev-btn btn"><FontAwesomeIcon icon={faChevronLeft} />이전</button>
+                        <button className="next-btn btn">다음<FontAwesomeIcon icon={faChevronRight} /></button>
                     </div>
                 </div>
             </div>

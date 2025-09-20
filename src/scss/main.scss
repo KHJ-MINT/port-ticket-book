@@ -323,6 +323,10 @@ $highlight-color: #FFBF00;
             margin-top: 50px;
             padding: 0 50px;
 
+            form {
+                height: 100%;
+            }
+
             .first-content-wrap {
                 &.close {
                     display: none;
@@ -488,6 +492,9 @@ $highlight-color: #FFBF00;
             .third-content-wrap {
                 width: 100%;
                 height: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
 
                 &.close {
                     display: none;

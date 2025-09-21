@@ -5,6 +5,8 @@ import { faXmark, faChevronRight, faChevronLeft, faMagnifyingGlass, faStar } fro
 const Popup = ({ onClose }) => {
     //close 버튼을 누르면 input의 모든 내용 삭제(클리어)
     //search input의 검색 버튼을 누르면 뮤지컬 제목 검색
+    //아래는 검색 시 사용할 api url
+    //http://kopis.or.kr/openApi/restful/pblprfr?service=e21a48cc0aaf458f970c39b4a03f017d&stdate=20250917&eddate=20250917&cpage=1&rows=5&shprfnm=위대한
     //검색 후 공연장 정보와 출연진 정보 자동 입력, 포스터 이미지를 가져와 자동 출력
     //1, 2, 3단계 완료 후 티켓을 등록 완료하면 등록 완료 팝업과 함께 티켓 리스트 출력.
     //로컬 데이터베이스에 입력.
@@ -41,7 +43,7 @@ const Popup = ({ onClose }) => {
                                 <div className="content-input-wrap">
                                     <div className="performance-info-wrap">
                                         <input type="text" className='place-input' name='perform-place' placeholder='공연장 정보' />
-                                        <input type="date" className="date-input" name='perform-date' />
+                                        <input type="datetime-local" className="date-input" name='perform-date' />
                                     </div>
                                     <div className="act-info-wrap">
                                         <p className="title">출연진 정보</p>
@@ -84,6 +86,7 @@ const Popup = ({ onClose }) => {
                                         <option value="R">R</option>
                                         <option value="S">S</option>
                                         <option value="A">A</option>
+                                        <option value="기타">기타</option>
                                     </select>
                                     <span className="text">석</span>
                                 </div>

@@ -6,7 +6,7 @@ $text-dark-color: #212121;
 $highlight-color: #FFBF00;
 
 .main-wrap {
-    padding: 20px;
+    padding: 0px 20px 0px 20px;
     width: 100%;
     display: flex;
 
@@ -145,7 +145,8 @@ $highlight-color: #FFBF00;
 
     .right-container {
         min-width: 985px;
-        padding: 20px;
+        min-height: 975px;
+        padding: 20px 20px 0 20px;
         background: $main-color;
         border-radius: 20px;
 
@@ -198,6 +199,11 @@ $highlight-color: #FFBF00;
         }
 
         .ticket-list-wrap {
+            min-height: 860px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
             .ticket-list-container {
                 display: flex;
                 flex-wrap: wrap;
@@ -211,7 +217,7 @@ $highlight-color: #FFBF00;
                     border-radius: 15px;
                     min-width: 420px;
                     width: calc(50% - 10px);
-                    min-height: 200px;
+                    height: 260px;
 
                     &:hover {
                         box-shadow: 0 0 15px rgba(255, 191, 0, 7);
@@ -238,12 +244,13 @@ $highlight-color: #FFBF00;
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
                             // 최대 3줄까지만 보이고, 이후부터는 말줄임 되도록
-                            -webkit-line-clamp: 3;
+                            -webkit-line-clamp: 2;
+                            line-clamp: 2;
                         }
 
                         .star {
                             color: $highlight-color;
-                            font-size: 32px;
+                            font-size: 26px;
 
                             svg {
                                 margin-right: 5px;
@@ -265,6 +272,24 @@ $highlight-color: #FFBF00;
                                 height: 100%;
                             }
                         }
+                    }
+                }
+            }
+
+            .pagination {
+                text-align: center;
+                margin: 15px 0;
+
+                button {
+                    font-size: 20px;
+                    color: $text-light-color;
+                    margin-right: 10px;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+
+                    &:not(:disabled) {
+                        cursor: pointer;
                     }
                 }
             }

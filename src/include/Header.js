@@ -15,7 +15,11 @@ const Header = () => {
             <div className="search-wrap">
                 <form action="get" className="search-form">
                     <div className="search-box">
-                        <input id='search-input' type="text" placeholder="날짜 / 공연 제목 / 출연진 이름으로 검색할 수 있습니다." name='search' />
+                        <input id='search-input'
+                            type="text"
+                            placeholder="날짜 / 공연 제목 / 출연진 이름으로 검색할 수 있습니다."
+                            name='search'
+                            autoComplete='off' />
                     </div>
                     <button id='search-btn' type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>

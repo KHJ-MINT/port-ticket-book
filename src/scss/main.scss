@@ -347,45 +347,88 @@ $highlight-color: #FFBF00;
                 }
 
                 .form-input-wrap {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
+                    position: relative;
 
-                    .title-search-input {
-                        display: inline-block;
-                        width: calc(50% - 10px);
-                        height: 55px;
-                        background-color: #fff;
-                        border: 1px solid $text-light-color;
-                        padding: 15px;
-                        border-radius: 10px;
-                        font-size: 22px;
-                        font-family: "Pretendard", sans-serif;
-                        cursor: text;
+                    .search-input-wrap {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        .title-search-input {
+                            display: inline-block;
+                            width: calc(50% - 10px);
+                            height: 55px;
+                            background-color: #fff;
+                            border: 1px solid $text-light-color;
+                            padding: 15px;
+                            border-radius: 10px;
+                            font-size: 22px;
+                            font-family: "Pretendard", sans-serif;
+                            cursor: text;
+                        }
+
+                        .date-input {
+                            display: inline-block;
+                            width: calc(50% - 10px);
+                            height: 55px;
+                            background-color: #fff;
+                            border: 1px solid $text-light-color;
+                            padding: 15px;
+                            border-radius: 10px;
+                            font-size: 22px;
+                            font-family: "Pretendard", sans-serif;
+                            cursor: text;
+                        }
+
+                        .popup-search-btn {
+                            display: inline-block;
+                            width: 40px;
+                            height: 40px;
+                            color: $text-light-color;
+                            font-size: 30px;
+                            cursor: pointer;
+                        }
                     }
 
-                    .date-input {
-                        display: inline-block;
-                        width: calc(50% - 10px);
-                        height: 55px;
+                    .search-result-wrap {
+                        position: absolute;
+                        top: 60px;
                         background-color: #fff;
-                        border: 1px solid $text-light-color;
-                        padding: 15px;
                         border-radius: 10px;
-                        font-size: 22px;
-                        font-family: "Pretendard", sans-serif;
-                        cursor: text;
-                    }
+                        color: $text-dark-color;
+                        width: 100%;
+                        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 
-                    .popup-search-btn {
-                        display: inline-block;
-                        width: 40px;
-                        height: 40px;
-                        color: $text-light-color;
-                        font-size: 30px;
-                        cursor: pointer;
+                        .search-result-list {
+                            display: flex;
+                            flex-direction: column;
+                            border-radius: 10px;
+                            max-height: 320px;
+                            overflow-y: auto;
+
+                            .search-result-list-item {
+                                padding: 15px;
+                                border-radius: 10px;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: #E0E0E0;
+                                }
+                            }
+
+                            .result-notice {
+                                padding: 15px;
+                                border-radius: 10px;
+                                cursor: default;
+                            }
+
+                            span {
+                                font-weight: 700;
+                            }
+                        }
                     }
                 }
+
 
                 .form-info-input-wrap {
                     display: flex;
@@ -396,6 +439,9 @@ $highlight-color: #FFBF00;
                         width: 240px;
                         height: 380px;
                         background-color: #d9d9d9;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
 
                         .search-poster {
                             display: inline-block;

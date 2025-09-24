@@ -15,7 +15,7 @@ const Main = ({ tickets, setTickets }) => {
 
     return (
         <main className="main-wrap inner">
-            <SideBar />
+            <SideBar tickets={tickets} />
             <TicketGrid onAddTicket={handleOpenPopup} tickets={tickets} />
             {isOpen && <Popup onClose={handleClosePopup} setTickets={setTickets} />}
         </main>

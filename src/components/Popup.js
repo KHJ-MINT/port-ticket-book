@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faChevronRight, faChevronLeft, faMagnifyingGlass, faStar, faL } from "@fortawesome/free-solid-svg-icons";
-import { text } from '@fortawesome/fontawesome-svg-core';
+import { faXmark, faChevronRight, faChevronLeft, faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Popup = ({ onClose, setTickets }) => {
     //1, 2, 3단계 완료 후 티켓을 등록 완료하면 등록 완료 팝업 출력.

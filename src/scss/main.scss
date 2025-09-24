@@ -209,6 +209,11 @@ $highlight-color: #FFBF00;
                     width: calc(50% - 10px);
                     min-height: 200px;
 
+                    &:hover {
+                        box-shadow: 0 0 15px rgba(255, 191, 0, 7);
+                        transition: box-shadow 0.3s ease-in-out;
+                    }
+
                     .ticket-info-wrap {
                         display: flex;
                         flex-direction: column;
@@ -320,7 +325,7 @@ $highlight-color: #FFBF00;
         .popup-content {
             width: 100%;
             height: 100%;
-            margin-top: 50px;
+            margin-top: 30px;
             padding: 0 50px;
 
             form {
@@ -332,14 +337,23 @@ $highlight-color: #FFBF00;
                     display: none;
                 }
 
+                .notice-text {
+                    text-align: center;
+                    color: $text-light-color;
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-top: 8px;
+                    margin-bottom: 20px;
+                }
+
                 .form-input-wrap {
                     display: flex;
                     align-items: center;
                     gap: 10px;
 
-                    .form-input {
+                    .title-search-input {
                         display: inline-block;
-                        width: 100%;
+                        width: calc(50% - 10px);
                         height: 55px;
                         background-color: #fff;
                         border: 1px solid $text-light-color;
@@ -347,6 +361,20 @@ $highlight-color: #FFBF00;
                         border-radius: 10px;
                         font-size: 22px;
                         font-family: "Pretendard", sans-serif;
+                        cursor: text;
+                    }
+
+                    .date-input {
+                        display: inline-block;
+                        width: calc(50% - 10px);
+                        height: 55px;
+                        background-color: #fff;
+                        border: 1px solid $text-light-color;
+                        padding: 15px;
+                        border-radius: 10px;
+                        font-size: 22px;
+                        font-family: "Pretendard", sans-serif;
+                        cursor: text;
                     }
 
                     .popup-search-btn {
@@ -368,16 +396,25 @@ $highlight-color: #FFBF00;
                         width: 240px;
                         height: 380px;
                         background-color: #d9d9d9;
+
+                        .search-poster {
+                            display: inline-block;
+                            width: 100%;
+                            height: 100%;
+                        }
                     }
 
                     .content-input-wrap {
                         display: flex;
                         flex-direction: column;
-                        gap: 15px;
+                        gap: 10px;
                         width: 450px;
 
                         .performance-info-wrap {
                             font-size: 20px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px 0;
 
                             input {
                                 width: calc(50% - 10px);
@@ -389,6 +426,16 @@ $highlight-color: #FFBF00;
                                 font-size: 18px;
                                 background-color: #fff;
                                 margin-right: 10px;
+                                cursor: pointer;
+
+                                &.view-date-input {
+                                    width: calc(60% - 10px);
+                                }
+
+                                &:read-only {
+                                    background-color: #ccc;
+                                    cursor: default;
+                                }
                             }
                         }
 
@@ -400,6 +447,12 @@ $highlight-color: #FFBF00;
                                 font-size: 22px;
                                 font-weight: 700;
                                 color: $text-light-color;
+
+                                .small-text {
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    margin-left: 5px;
+                                }
                             }
 
                             .act-list-wrap {
@@ -407,14 +460,30 @@ $highlight-color: #FFBF00;
                                 flex-wrap: wrap;
                                 gap: 10px;
 
-                                input {
+                                .actor-input-container {
                                     width: calc(50% - 10px);
-                                    height: 40px;
-                                    border-radius: 10px;
+                                    height: 50px;
+                                    border-radius: 15px;
                                     border: 1px solid $text-light-color;
-                                    padding: 10px;
+                                    padding: 10px 15px;
                                     font-size: 18px;
                                     background-color: #fff;
+                                    display: flex;
+                                    align-items: center;
+
+                                    .act-info {
+                                        display: inline-block;
+                                        width: 35%;
+                                        height: 100%;
+                                        border-right: 1px solid #ccc;
+                                    }
+
+                                    .cast-info {
+                                        display: inline-block;
+                                        width: 65%;
+                                        height: 100%;
+                                        padding-left: 10px;
+                                    }
                                 }
                             }
                         }
@@ -541,6 +610,7 @@ $highlight-color: #FFBF00;
                             font-size: 20px;
                             font-family: "Pretendard", sans-serif;
                             outline: none;
+                            text-align: center;
                         }
                     }
 
@@ -567,6 +637,7 @@ $highlight-color: #FFBF00;
                             font-size: 20px;
                             background-color: #fff;
                             font-family: "Pretendard", sans-serif;
+                            text-align: center;
                         }
                     }
                 }

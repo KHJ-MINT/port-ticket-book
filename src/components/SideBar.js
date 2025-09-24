@@ -8,6 +8,7 @@ const SideBar = () => {
             <MyTicketBook />
             <RecentRecode />
             <Navigation />
+            <p className="notice">공연 정보 출처: (재)예술경영지원센터 공연예술통합전산망(www.kopis.or.kr)</p>
         </div>
     )
 }

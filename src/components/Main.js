@@ -4,8 +4,8 @@ import SideBar from './SideBar';
 import TicketGrid from './TicketGrid';
 import Popup from './Popup';
 
-const Main = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const Main = ({ tickets, setTickets }) => {
+    const [isOpen, setIsOpen] = useState(false); //팝업 열고 닫기
     const handleOpenPopup = () => {
         setIsOpen(true);
     };
@@ -16,8 +16,8 @@ const Main = () => {
     return (
         <main className="main-wrap inner">
             <SideBar />
-            <TicketGrid onAddTicket={handleOpenPopup} />
-            {isOpen && <Popup onClose={handleClosePopup} />}
+            <TicketGrid onAddTicket={handleOpenPopup} tickets={tickets} />
+            {isOpen && <Popup onClose={handleClosePopup} setTickets={setTickets} />}
         </main>
     )
 }

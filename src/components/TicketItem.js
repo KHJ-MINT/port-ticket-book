@@ -1,23 +1,35 @@
-import posterImg from '../img/poster.jpg';
+// import posterImg from '../img/poster.jpg'; 임시로 사용한 이미지
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-const TicketItem = () => {
+const TicketItem = ({ ticketData }) => {
+    //출연진 배열을 문자열로 전환
+    const actorLists = ticketData.cast.map(c => c.actor).join(', ');
+
+    //별점을 별 아이콘 갯수만큼 나오게 변경
+    const ratingStars = () => {
+        const stars = [];
+        for (let i = 0; i < ticketData.rating; i++) {
+            stars.push(<FontAwesomeIcon icon={faStar} key={i} />);
+        }
+        //console.log(stars);
+        return stars;
+    };
+
     return (
         <div className="ticket-list-item">
             <div className="ticket-info-wrap">
-                <h6 className="ticket-title">지킬앤하이드 - 20주년 기념 공연</h6>
-                <p className="ticket-date">2025.05 14:00</p>
-                <p className="ticket-place">블루스퀘어 신한카드홀</p>
+                <h6 className="ticket-title">{ticketData.title}</h6>
+                <p className="ticket-date">{ticketData.date}</p>
+                <p className="ticket-place">{ticketData.location}</p>
                 <div className="ticket-actors">
-                    <p className="actors-title">출연진</p>
-                    <p className="actors-name">홍광호, 린아, 김용수, 손지수, 이희정</p>
+                    <p className="actors-name">{actorLists}</p>
                 </div>
-                <p className="star"><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /></p>
+                <p className="star">{ratingStars()}</p>
             </div>
             <div className="poster-wrap">
                 <div className="poster-box">
-                    <img src={posterImg} alt="포스터 이미지" />
+                    <img src={ticketData.poster} alt={`${ticketData.title} 포스터`} />
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import TicketItem from "./TicketItem";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const TicketList = ({ tickets }) => {
+const TicketList = ({ tickets, onSelect }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
@@ -28,7 +28,7 @@ const TicketList = ({ tickets }) => {
             <div className="ticket-list-container">
                 {
                     currentTickets.map((ticket) => (
-                        <TicketItem key={ticket.id} ticketData={ticket} />
+                        <TicketItem key={ticket.id} ticketData={ticket} onClick={() => onSelect(ticket.id)} />
                     ))
                 }
             </div>

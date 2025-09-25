@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
-const TicketItem = ({ ticketData }) => {
+const TicketItem = ({ ticketData, onClick }) => {
     //출연진 배열을 문자열로 전환
     const actorLists = ticketData.cast.map(c => c.actor).join(', ');
 
@@ -17,7 +17,7 @@ const TicketItem = ({ ticketData }) => {
     };
 
     return (
-        <div className="ticket-list-item">
+        <div className="ticket-list-item" onClick={onClick}>
             <div className="ticket-info-wrap">
                 <h6 className="ticket-title">{ticketData.title}</h6>
                 <p className="ticket-date">{ticketData.date}</p>

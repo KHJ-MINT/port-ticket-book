@@ -11,10 +11,14 @@ const TicketGrid = ({ tickets, onAddTicket }) => {
 
     return (
         <div className="right-container">
-            <ControlPanel onOpen={onAddTicket} />
+
             {selectedTicketId
                 ? <TicketDetail ticket={selectedTicket} onBack={() => setSelectedTicketId(null)} />
-                : <TicketList tickets={tickets} onSelect={setSelectedTicketId} />
+                :
+                <>
+                    <ControlPanel onOpen={onAddTicket} />
+                    <TicketList tickets={tickets} onSelect={setSelectedTicketId} />
+                </>
             }
 
         </div>

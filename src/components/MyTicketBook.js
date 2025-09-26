@@ -46,7 +46,7 @@ const MyTicketBook = ({ tickets }) => {
 
     useEffect(() => {
         const statsData = getStatistics();
-        console.log("데이터 : ", statsData);
+        //console.log("데이터 : ", statsData);
         setStats(statsData);
     }, [tickets]); //의존성 배열에 tickets 추가
 

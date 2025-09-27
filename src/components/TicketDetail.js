@@ -1,7 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faPencil, faTrashCan, faChevronLeft, faCalendar, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-const TicketDetail = ({ ticket, onBack }) => {
+//티켓 삭제하기
+const deleteTicket = (deleteId, setTickets) => {
+    //전체 티켓 데이터 가져오기
+    const storedData = localStorage.getItem('tickets');
+    const allTickets = storedData ? JSON.parse(storedData) : [];
+
+    //삭제할 티켓을 제외하고 필터링하기
+    const updatedTickets = allTickets.filter(ticket => ticket.id !== deleteId);
+
+    //로컬 스토리지에 업데이트된 티켓 데이터 저장하기
+    localStorage.setItem('tickets', JSON.stringify(updatedTickets));
+
+    //상위 컴포넌트에 업데이트된 티켓 데이터 전달하기
+    if (setTickets) {
+        setTickets(updatedTickets);
+    }
+}
+
+const TicketDetail = ({ ticket, onBack, setTickets }) => {
     if (!ticket) return null;
     //console.log(ticket.id);
 
@@ -17,6 +35,16 @@ const TicketDetail = ({ ticket, onBack }) => {
     //가격을 출력할 때 천 단위 콤마 추가
     const formatPrice = (price) => {
         return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    //티켓 삭제하기 핸들러
+    const handelTicketDelete = () => {
+        if (window.confirm("정말 티켓을 삭제하시겠습니까? 삭제한 티켓은 복구할 수 없습니다.")) {
+            deleteTicket(ticket.id, setTickets);
+            onBack(); //목록으로 돌아가기
+        } else {
+            return false;
+        }
     }
 
     return (
@@ -86,7 +114,7 @@ const TicketDetail = ({ ticket, onBack }) => {
                         </button>
                     </div>
                     <div className="right-btns">
-                        <button className="delete-btn">
+                        <button className="delete-btn" onClick={handelTicketDelete}>
                             <span className="icon"><FontAwesomeIcon icon={faTrashCan} /></span>
                             <span className="text">티켓 삭제하기</span>
                         </button>

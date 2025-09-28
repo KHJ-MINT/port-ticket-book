@@ -14,8 +14,6 @@ const Main = ({ tickets, setTickets, selectedTicketId, setSelectedTicketId, sear
         setIsOpen(false);
     };
 
-    console.log(onMiniPopupOpen);
-
     return (
         <main className="main-wrap inner">
             <SideBar tickets={tickets} />

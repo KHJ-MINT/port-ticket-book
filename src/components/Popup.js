@@ -171,7 +171,6 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
             setReview(ticket.review || '');
             setSeatClass(ticket.seatClass || 'none');
             setSeatPrice(ticket.seatPrice || 0);
-            console.log("수정할 티켓 정보 : ", ticket);
         }
     }, [isEdit, ticket]);
 

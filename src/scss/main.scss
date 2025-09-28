@@ -45,7 +45,7 @@ $highlight-color: #FFBF00;
         }
 
         .my-ticketbook-wrap {
-            min-height: 150px;
+            height: 175px;
 
             .title {
                 font-size: 20px;
@@ -1127,5 +1127,77 @@ $highlight-color: #FFBF00;
 @media all and (max-width: 1440px) {
     .main-wrap .right-container .ticket-list-wrap .ticket-list-container .ticket-list-item .ticket-info-wrap {
         font-size: 16px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .main-wrap {
+        flex-direction: column;
+
+        .left-container {
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .my-ticketbook-wrap {
+                width: calc(50% - 30px);
+            }
+
+            .recently-view-wrap {
+                width: calc(50% - 30px);
+
+                .poster-wrap {
+                    display: none;
+                }
+            }
+        }
+
+        .right-container {
+            width: 100%;
+
+            .ticket-list-wrap {
+                flex-direction: column;
+
+                .ticket-list-container {
+                    .ticket-list-item {
+                        width: 100%;
+
+                        .ticket-info-wrap {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .ticket-detail-wrap {
+            .ticket-detail-container {
+                .ticket-detail-content {
+                    .ticket-info-wrap {
+                        flex-wrap: wrap;
+                    }
+                }
+
+                .ticket-detail-btns {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
+    .popup-wrap {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+
+        .popup-container {
+            width: 100%;
+            padding: 10px;
+
+            .popup-content {
+                padding: 0 10px;
+            }
+        }
     }
 }

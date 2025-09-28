@@ -9,6 +9,12 @@ import { useEffect, useState } from 'react';
 function App() {
   const [tickets, setTickets] = useState([]);
   const [selectedTicketId, setSelectedTicketId] = useState(null); //선택한 티켓 아이디
+  const [searchTerm, setSearchTerm] = useState(''); //검색어 상태 추가
+
+  //검색어 변경 핸들러
+  const handleSearchChange = (term) => {
+    setSearchTerm(term);
+  };
 
   useEffect(() => {
     //로컬 스토리지에서 'tickets'라는 키의 데이터가 있는지 확인
@@ -33,13 +39,14 @@ function App() {
   return (
     <div className="App" id='wrap'>
       <BrowserRouter>
-        <Header setSelectedTicketId={setSelectedTicketId} />
+        <Header setSelectedTicketId={setSelectedTicketId} searchTerm={searchTerm} onSearchChange={handleSearchChange} />
         <Routes>
           <Route path='/' element={<Main
             setTickets={setTickets}
             tickets={tickets}
             selectedTicketId={selectedTicketId}
             setSelectedTicketId={setSelectedTicketId}
+            searchTerm={searchTerm}
           />} />
         </Routes>
       </BrowserRouter>

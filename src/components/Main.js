@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 import TicketGrid from './TicketGrid';
 import Popup from './Popup';
 
-const Main = ({ tickets, setTickets, selectedTicketId, setSelectedTicketId }) => {
+const Main = ({ tickets, setTickets, selectedTicketId, setSelectedTicketId, searchTerm }) => {
     const [isOpen, setIsOpen] = useState(false); //팝업 열고 닫기
     const handleOpenPopup = () => {
         setIsOpen(true);
@@ -22,6 +22,7 @@ const Main = ({ tickets, setTickets, selectedTicketId, setSelectedTicketId }) =>
                 setTickets={setTickets}
                 selectedTicketId={selectedTicketId}
                 setSelectedTicketId={setSelectedTicketId}
+                searchTerm={searchTerm}
             />
             {isOpen && <Popup onClose={handleClosePopup} setTickets={setTickets} />}
         </main>

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TicketItem from "./TicketItem";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const TicketList = ({ tickets, onSelect }) => {
+const TicketList = ({ tickets, onSelect, searchTerm }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 

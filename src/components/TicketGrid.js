@@ -27,7 +27,32 @@ const sortTickets = (tickets, key, order = 'asc') => {
     return sortedTickets;
 }
 
-const TicketGrid = ({ tickets, onAddTicket, setTickets, selectedTicketId, setSelectedTicketId }) => {
+//티켓 검색하기
+const searchTickets = (tickets, searchTerm) => {
+    if (!searchTerm || searchTerm.trim() === '') {
+        return tickets; //검색어가 없으면 원본 배열 반환
+    }
+
+    //검색어의 공백을 제거하고 소문자로 변환해 비교할 준비
+    const lowerSearchTerm = searchTerm.trim().toLowerCase();
+
+    //filter() 메서드를 이용해 조건에 맞는 티켓만 추출
+    const filterdTickets = tickets.filter(ticket => {
+        //날짜
+        const dateMatch = ticket.date.toLowerCase().includes(lowerSearchTerm);
+        //공연 제목
+        const titleMatch = ticket.title.toLowerCase().includes(lowerSearchTerm);
+        //출연진
+        const actorList = ticket.cast.map(c => c.actor).join(" ");
+        const castMatch = actorList.toLowerCase().includes(lowerSearchTerm);
+
+        //세 가지 중 하나라도 일치할 경우 반환
+        return dateMatch || titleMatch || castMatch;
+    });
+    return filterdTickets;
+}
+
+const TicketGrid = ({ tickets, onAddTicket, setTickets, selectedTicketId, setSelectedTicketId, searchTerm }) => {
 
     const [sortKey, setSortKey] = useState('date'); //정렬 기준. 기본은 날짜.
     const [sortOrder, setSortOrder] = useState('asc'); //정렬 순서. 기본은 오름차순.
@@ -43,8 +68,14 @@ const TicketGrid = ({ tickets, onAddTicket, setTickets, selectedTicketId, setSel
 
     //티켓 변경 시에도 날짜 오름차순 정렬
     useEffect(() => {
-        setDisplayTickets(sortTickets(tickets, sortKey, sortOrder));
-    }, [tickets, sortKey, sortOrder]); // tickets가 바뀔 때만 오름차순으로 초기화
+        //검색어가 있을 경우 검색된 티켓을 정렬
+        const searched = searchTickets(tickets, searchTerm);
+
+        //티켓 정렬 적용
+        const finalDisplayTickets = sortTickets(searched, sortKey, sortOrder);
+
+        setDisplayTickets(finalDisplayTickets);
+    }, [tickets, sortKey, sortOrder, searchTerm]); // tickets가 바뀔 때만 오름차순으로 초기화
 
     return (
         <div className="right-container">
@@ -67,7 +98,7 @@ const TicketGrid = ({ tickets, onAddTicket, setTickets, selectedTicketId, setSel
                         displayTickets={displayTickets}
                         setDisplayTickets={setDisplayTickets}
                     />
-                    <TicketList tickets={displayTickets} onSelect={setSelectedTicketId} />
+                    <TicketList tickets={displayTickets} onSelect={setSelectedTicketId} searchTerm={searchTerm} />
                 </>
             }
 

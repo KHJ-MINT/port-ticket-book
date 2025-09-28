@@ -390,9 +390,9 @@ const Popup = ({ onClose, setTickets }) => {
                                         name="ticket-seat-price"
                                         className="seat-price-input"
                                         autoComplete='off'
-                                        placeholder='1'
+                                        placeholder='10000'
                                     />
-                                    <span className="text">만원</span>
+                                    <span className="text">원</span>
                                 </div>
                             </div>
                             <p className="notice-text">입력한 정보는 관람 통계에 사용됩니다.</p>

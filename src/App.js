@@ -47,20 +47,16 @@ function App() {
 
   return (
     <div className="App" id='wrap'>
-      <BrowserRouter>
-        <Header setSelectedTicketId={setSelectedTicketId} searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-        <Routes>
-          <Route path='/' element={<Main
-            setTickets={setTickets}
-            tickets={tickets}
-            selectedTicketId={selectedTicketId}
-            setSelectedTicketId={setSelectedTicketId}
-            searchTerm={searchTerm}
-            isMiniPopupVisible={isMiniPopupVisible}
-            onMiniPopupOpen={handleMiniPopupOpen}
-          />} />
-        </Routes>
-      </BrowserRouter>
+      <Header setSelectedTicketId={setSelectedTicketId} searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+      <Main
+        setTickets={setTickets}
+        tickets={tickets}
+        selectedTicketId={selectedTicketId}
+        setSelectedTicketId={setSelectedTicketId}
+        searchTerm={searchTerm}
+        isMiniPopupVisible={isMiniPopupVisible}
+        onMiniPopupOpen={handleMiniPopupOpen}
+      />
     </div>
   );
 }

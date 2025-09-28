@@ -10,11 +10,20 @@ function App() {
   const [tickets, setTickets] = useState([]);
   const [selectedTicketId, setSelectedTicketId] = useState(null); //선택한 티켓 아이디
   const [searchTerm, setSearchTerm] = useState(''); //검색어 상태 추가
+  const [isMiniPopupVisible, setIsMiniPopupVisible] = useState(false); //미니 팝업 표시 여부
 
   //검색어 변경 핸들러
   const handleSearchChange = (term) => {
     setSearchTerm(term);
   };
+
+  //미니 팝업 출력 함수(티켓 저장/수정 후 호출)
+  const handleMiniPopupOpen = () => {
+    setIsMiniPopupVisible(true);
+    setTimeout(() => {
+      setIsMiniPopupVisible(false);
+    }, 5000); //5초 후 닫기
+  }
 
   useEffect(() => {
     //로컬 스토리지에서 'tickets'라는 키의 데이터가 있는지 확인
@@ -47,6 +56,8 @@ function App() {
             selectedTicketId={selectedTicketId}
             setSelectedTicketId={setSelectedTicketId}
             searchTerm={searchTerm}
+            isMiniPopupVisible={isMiniPopupVisible}
+            onMiniPopupOpen={handleMiniPopupOpen}
           />} />
         </Routes>
       </BrowserRouter>

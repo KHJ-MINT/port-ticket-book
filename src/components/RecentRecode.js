@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 const getLocalData = () => {
     const storedData = localStorage.getItem('tickets');

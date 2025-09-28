@@ -1099,6 +1099,30 @@ $highlight-color: #FFBF00;
     }
 }
 
+//미니 팝업
+.mini-popup {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: $text-dark-color;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    transition: 0.5s;
+
+    .icon {
+        margin-right: 10px;
+        color: $main-color;
+    }
+}
+
 //반응형
 @media all and (max-width: 1440px) {
     .main-wrap .right-container .ticket-list-wrap .ticket-list-container .ticket-list-item .ticket-info-wrap {

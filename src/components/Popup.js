@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faChevronRight, faChevronLeft, faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
 
-const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
+const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen }) => {
     //1, 2, 3단계 완료 후 티켓을 등록 완료하면 등록 완료 팝업 출력.
     //한 페이지에 최대 6개의 티켓 출력. 6개를 넘기면 페이지네이션 추가.
 
@@ -203,6 +203,8 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
                 localStorage.setItem('tickets', JSON.stringify(updatedTickets));
                 setTickets(updatedTickets);
             }
+            //팝업 닫기
+            onClose();
         } else if (window.confirm('티켓을 등록하시겠습니까?')) {
             if (searchResult.length > 0) {
                 //저장할 티켓 객체 생성
@@ -277,11 +279,14 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
                 alert('등록할 티켓의 공연이 검색되지 않았습니다!');
                 return false;
             }
+            //팝업 닫기
+            onClose();
+            //미니 팝업 열기
+            onMiniPopupOpen();
         } else {
             console.log('티켓 저장 취소');
         }
-        //팝업 닫기
-        onClose();
+
     }
 
     //다음 버튼 클릭 시

@@ -134,7 +134,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
         //date 객체에서 날짜와 시간 정보 추출
         const year = dateString.getFullYear(); //연도
         const month = String(dateString.getMonth() + 1).padStart(2, '0'); //월. 한 자리일 경우 앞에 '0' 추가하기 위해 padStart 함수 사용
-        const day = String(dateString.getDate()).padStart(2, ''); //일.
+        const day = String(dateString.getDate()).padStart(2, '0'); //일.
         let hours = dateString.getHours(); //시간은 변경되어야 하기 때문에 let으로 선언
         const minutes = String(dateString.getMinutes()).padStart(2, '0'); //분
 
@@ -147,11 +147,23 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
         return `${year}.${month}.${day} ${ampm} ${hours}:${minutes}`;
     }
 
+    //티켓을 수정할 때 날짜 형식 변경하기
+    function toDatetimeLocal(dateStr) {
+        const match = dateStr.match(/(\d{4})\.(\d{2})\.(\d{2})\s(오전|오후)\s(\d{2}):(\d{2})/);
+        if (!match) return '';
+
+        let [_, year, month, day, ampm, hour, minute] = match;
+        hour = parseInt(hour, 10);
+        if (ampm === '오후' && hour < 12) hour += 12;
+        if (ampm === '오전' && hour === 12) hour = 0;
+        return `${year}-${month}-${day}T${String(hour).padStart(2, '0')}:${minute}`;
+    }
+
     //티켓 수정하기
     useEffect(() => {
         if (isEdit && ticket) {
             setTitle(ticket.title || '');
-            setDate(ticket.date || '');
+            setDate(toDatetimeLocal(ticket.date) || '');
             setLocation(ticket.location || '');
             setPoster(ticket.poster || '');
             setCast(ticket.cast || Array.from({ length: 8 }, () => ({ actor: '', role: '' })));
@@ -159,6 +171,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
             setReview(ticket.review || '');
             setSeatClass(ticket.seatClass || 'none');
             setSeatPrice(ticket.seatPrice || 0);
+            console.log("수정할 티켓 정보 : ", ticket);
         }
     }, [isEdit, ticket]);
 
@@ -176,7 +189,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
                     t.id === ticket.id ? {
                         ...t,
                         title,
-                        date,
+                        date: formatDate(date),
                         poster,
                         location,
                         cast,
@@ -430,6 +443,8 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
                                         className="seat-price-input"
                                         autoComplete='off'
                                         placeholder='10000'
+                                        value={seatPrice}
+                                        onChange={(e) => setSeatPrice(e.target.value)}
                                     />
                                     <span className="text">원</span>
                                 </div>

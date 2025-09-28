@@ -66,11 +66,11 @@ const TicketDetail = ({ ticket, onBack, setTickets }) => {
                                 <div className="date-location-info">
                                     <p className="date-info info-text">
                                         <span className="icon"><FontAwesomeIcon icon={faCalendar} /></span>
-                                        <span className="text">2025.05.10 오후 02:00</span>
+                                        <span className="text">{ticket.date}</span>
                                     </p>
                                     <p className="location-info info-text">
                                         <span className="icon"><FontAwesomeIcon icon={faLocationDot} /></span>
-                                        <span className="text">블루스퀘어</span>
+                                        <span className="text">{ticket.location}</span>
                                     </p>
                                 </div>
                                 <div className="actor-info-wrap">

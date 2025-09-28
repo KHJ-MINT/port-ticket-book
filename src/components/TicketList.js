@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TicketItem from "./TicketItem";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";

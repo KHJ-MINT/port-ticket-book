@@ -85,6 +85,10 @@ $highlight-color: #FFBF00;
             }
 
             .recently-view-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
                 .title {
                     font-size: 20px;
                     font-weight: 700;
@@ -92,7 +96,12 @@ $highlight-color: #FFBF00;
                 }
 
                 .info-list-wrap {
-                    &>p {
+                    .title-info {
+                        line-height: 1.4;
+                        margin-bottom: 5px;
+                    }
+
+                    .cast-info {
                         line-height: 1.4;
                         margin-bottom: 5px;
                         white-space: nowrap;

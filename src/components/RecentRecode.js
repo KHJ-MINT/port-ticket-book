@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 const getLocalData = () => {
     const storedData = localStorage.getItem('tickets');
@@ -46,7 +48,6 @@ const RecentRecode = ({ tickets }) => {
                                 <p className="cast-info">{actorList}</p>
                                 <p className="date-info">{latestTicket.date}</p>
                             </div>
-                            <div className="edit-btn"><button type="button">티켓 수정</button></div>
                         </div>
                     </>
                 ) : (

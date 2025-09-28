@@ -1,16 +1,15 @@
 import '../scss/header.scss';
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 
-const Header = () => {
+const Header = ({ setSelectedTicketId }) => {
     return (
         <header className="header inner">
             <div className="go-home">
-                <Link to={"/"}>
+                <button type='button' onClick={() => setSelectedTicketId(null)}>
                     <FontAwesomeIcon icon={faHouse} />
-                </Link>
+                </button>
             </div>
             <div className="search-wrap">
                 <form action="get" className="search-form">

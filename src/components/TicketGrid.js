@@ -27,8 +27,8 @@ const sortTickets = (tickets, key, order = 'asc') => {
     return sortedTickets;
 }
 
-const TicketGrid = ({ tickets, onAddTicket, setTickets }) => {
-    const [selectedTicketId, setSelectedTicketId] = useState(null); //선택한 티켓 아이디
+const TicketGrid = ({ tickets, onAddTicket, setTickets, selectedTicketId, setSelectedTicketId }) => {
+
     const [sortKey, setSortKey] = useState('date'); //정렬 기준. 기본은 날짜.
     const [sortOrder, setSortOrder] = useState('asc'); //정렬 순서. 기본은 오름차순.
     const [displayTickets, setDisplayTickets] = useState(() => sortTickets(tickets, sortKey, sortOrder)); //정렬된 결과를 저장

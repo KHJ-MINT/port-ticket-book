@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [tickets, setTickets] = useState([]);
+  const [selectedTicketId, setSelectedTicketId] = useState(null); //선택한 티켓 아이디
 
   useEffect(() => {
     //로컬 스토리지에서 'tickets'라는 키의 데이터가 있는지 확인
@@ -32,9 +33,14 @@ function App() {
   return (
     <div className="App" id='wrap'>
       <BrowserRouter>
-        <Header />
+        <Header setSelectedTicketId={setSelectedTicketId} />
         <Routes>
-          <Route path='/' element={<Main setTickets={setTickets} tickets={tickets} />} />
+          <Route path='/' element={<Main
+            setTickets={setTickets}
+            tickets={tickets}
+            selectedTicketId={selectedTicketId}
+            setSelectedTicketId={setSelectedTicketId}
+          />} />
         </Routes>
       </BrowserRouter>
     </div>

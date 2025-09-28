@@ -174,6 +174,7 @@ $highlight-color: #FFBF00;
             .control-panel-container {
                 display: flex;
                 justify-content: space-between;
+                position: relative;
 
                 .control-btn {
                     width: 210px;
@@ -210,6 +211,46 @@ $highlight-color: #FFBF00;
                             display: inline-block;
                             width: 20px;
                             margin-right: 10px;
+                        }
+                    }
+                }
+
+                .order-filter-lists {
+                    position: absolute;
+                    top: 65px;
+                    width: 210px;
+                    display: none;
+                    flex-direction: column;
+                    gap: 10px;
+                    background-color: #fff;
+                    border-radius: 15px;
+                    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
+
+                    &.open {
+                        display: flex;
+                    }
+
+                    .order-filter-item {
+                        &:first-child {
+                            border-top-left-radius: 15px;
+                            border-top-right-radius: 15px;
+                        }
+
+                        &:last-child {
+                            border-bottom-left-radius: 15px;
+                            border-bottom-right-radius: 15px;
+                        }
+
+                        &:hover {
+                            background-color: $highlight-color;
+                        }
+
+                        .order-filter-btn {
+                            cursor: pointer;
+                            display: inline-block;
+                            width: 100%;
+                            height: 100%;
+                            padding: 10px 15px;
                         }
                     }
                 }

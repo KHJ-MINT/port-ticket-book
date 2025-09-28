@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faChevronRight, faChevronLeft, faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
 
-const Popup = ({ onClose, setTickets }) => {
+const Popup = ({ onClose, setTickets, isEdit = false, ticket }) => {
     //1, 2, 3단계 완료 후 티켓을 등록 완료하면 등록 완료 팝업 출력.
     //한 페이지에 최대 6개의 티켓 출력. 6개를 넘기면 페이지네이션 추가.
 
@@ -23,7 +23,7 @@ const Popup = ({ onClose, setTickets }) => {
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState('');
     const [seatClass, setSeatClass] = useState('none');
-    // const [seatPrice, setSeatPrice] = useState('');
+    const [seatPrice, setSeatPrice] = useState(0);
 
     //검색 결과
     const [searchResult, setSearchResult] = useState([]);
@@ -147,11 +147,50 @@ const Popup = ({ onClose, setTickets }) => {
         return `${year}.${month}.${day} ${ampm} ${hours}:${minutes}`;
     }
 
+    //티켓 수정하기
+    useEffect(() => {
+        if (isEdit && ticket) {
+            setTitle(ticket.title || '');
+            setDate(ticket.date || '');
+            setLocation(ticket.location || '');
+            setPoster(ticket.poster || '');
+            setCast(ticket.cast || Array.from({ length: 8 }, () => ({ actor: '', role: '' })));
+            setRating(ticket.rating || 0);
+            setReview(ticket.review || '');
+            setSeatClass(ticket.seatClass || 'none');
+            setSeatPrice(ticket.seatPrice || 0);
+        }
+    }, [isEdit, ticket]);
+
     //티켓 저장
     const handleFormSubmit = (e) => {
         e.preventDefault(); //새로고침을 방지하기 위한 기본 이벤트 제거
 
-        if (window.confirm('티켓을 등록하시겠습니까?')) {
+        if (isEdit && ticket) {
+            if (window.confirm('티켓 정보를 수정하시겠습니까?')) {
+                //수정할 티켓 객체 생성
+                const storedTickets = localStorage.getItem('tickets');
+                const tickets = storedTickets ? JSON.parse(storedTickets) : [];
+
+                const updatedTickets = tickets.map(t =>
+                    t.id === ticket.id ? {
+                        ...t,
+                        title,
+                        date,
+                        poster,
+                        location,
+                        cast,
+                        rating,
+                        review,
+                        seatClass,
+                        seatPrice
+                    }
+                        : t
+                );
+                localStorage.setItem('tickets', JSON.stringify(updatedTickets));
+                setTickets(updatedTickets);
+            }
+        } else if (window.confirm('티켓을 등록하시겠습니까?')) {
             if (searchResult.length > 0) {
                 //저장할 티켓 객체 생성
                 const form = document.querySelector('#popup-form');

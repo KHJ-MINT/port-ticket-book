@@ -49,6 +49,5 @@
   "proxy": "http://kopis.or.kr",
   "devDependencies": {
     "gh-pages": "^6.3.0"
-  },
-  "homepage": "https://KHJ-MINT.github.io/ticket-book"
+  }
 }

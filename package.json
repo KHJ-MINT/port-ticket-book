@@ -46,7 +46,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://kopis.or.kr",
+  "proxy": "https://kopis.or.kr",
   "devDependencies": {
     "gh-pages": "^6.3.0"
   }

@@ -3,9 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faChevronRight, faChevronLeft, faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen }) => {
-    //1, 2, 3단계 완료 후 티켓을 등록 완료하면 등록 완료 팝업 출력.
-    //한 페이지에 최대 6개의 티켓 출력. 6개를 넘기면 페이지네이션 추가.
-
     //티켓 입력 단계 관리
     const [step, setStep] = useState(1); //초기값은 1로
     const totalStep = 3; //총 3단계
@@ -34,6 +31,15 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
         setLocation(searchResult.location);
         setPoster(searchResult.poster);
 
+        setIsSearched(false);
+    }
+
+    //티켓 수동 입력 모드 전환
+    const [isMaunualMode, setIsMaunualMode] = useState(false);
+
+    const handleSwitchToManualMode = () => {
+        setIsMaunualMode(true);
+        setSearchResult([]);
         setIsSearched(false);
     }
 
@@ -78,12 +84,16 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
                 setIsSearched(true);
                 //console.log("검색한 날짜 :", searchDate);
                 //console.log("검색 결과 : ", searchResult);
-
+                if (performances.length === 0) {
+                    alert("검색 결과가 없습니다. 수동으로 입력해 주세요.");
+                    handleSwitchToManualMode();
+                    setIsSearched(true);
+                }
             })
             .catch(error => {
                 console.error('검색 중 에러 발생 : ', error);
-                alert("검색에 실패했습니다. 검색어를 확인해 주세요.");
-                setSearchResult([]);
+                alert("검색에 실패했습니다. 수동으로 입력해 주세요.");
+                handleSwitchToManualMode();
                 setIsSearched(true);
                 return false;
             })
@@ -124,6 +134,15 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
     const handleRatingClick = (clicked) => {
         setRating(clicked);
         //console.log(rating);
+    }
+
+    //수동 입력 시 제목, 장소 입력
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+    }
+
+    const handleLocationChange = (e) => {
+        setLocation(e.target.value);
     }
 
     //관람 시간 형식 변경
@@ -205,7 +224,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
             //팝업 닫기
             onClose();
         } else if (window.confirm('티켓을 등록하시겠습니까?')) {
-            if (searchResult.length > 0) {
+            if (searchResult.length > 0 || isMaunualMode) {
                 //저장할 티켓 객체 생성
                 const form = document.querySelector('#popup-form');
                 const formData = new FormData(form);
@@ -253,6 +272,9 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
                 //저장하기 전 관람 일자 형식 변경
                 const formatedDate = formatDate(data['ticket-date']);
 
+                //포스터 이미지가 없는 경우 기본 이미지 지정
+                const poster = searchResult.length > 0 ? searchResult[0].poster : '';
+
                 //저장할 데이터 정리
                 const newTicket = {
                     id: newId,
@@ -261,7 +283,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
                     location: data['ticket-place'],
                     cast: filterCast,
                     rating: rating,
-                    poster: searchResult[0].poster,
+                    poster: poster,
                     review: review,
                     seatClass: data['ticket-seat-class'],
                     seatPrice: data['ticket-seat-price']
@@ -339,7 +361,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
                                                             </li>
                                                         ))
                                                     ) : (
-                                                        <li className="result-notice">검색 결과가 없습니다.</li>
+                                                        <li className="result-notice" onClick={handleSwitchToManualMode()}>검색 결과가 없습니다.</li>
                                                     )
                                                 }
                                             </ul>
@@ -356,17 +378,21 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
                                 </div>
                                 <div className="content-input-wrap">
                                     <div className="performance-info-wrap">
-                                        <input type="text" readOnly
+                                        <input type="text" readOnly={!isMaunualMode}
                                             className='performance-title'
                                             name='ticket-title'
                                             autoComplete='off'
                                             placeholder='공연 제목'
-                                            value={title} />
+                                            value={title}
+                                            onChange={(e) => handleTitleChange(e)}
+                                        />
                                         <input type="text" className='place-input'
                                             name='ticket-place'
-                                            placeholder='공연장' readOnly
+                                            placeholder='공연장' readOnly={!isMaunualMode}
                                             autoComplete='off'
-                                            value={location} />
+                                            value={location}
+                                            onChange={(e) => handleLocationChange(e)}
+                                        />
                                         <input type="datetime-local"
                                             className='view-date-input'
                                             name='ticket-date'

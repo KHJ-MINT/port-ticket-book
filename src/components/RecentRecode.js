@@ -36,7 +36,13 @@ const RecentRecode = ({ tickets }) => {
                     <>
                         <div className="poster-wrap">
                             <div className="poster-img">
-                                <img src={latestTicket.poster} alt="포스터 이미지" />
+                                {
+                                    latestTicket.poster === '' ? (
+                                        <p className="notice">포스터가 없습니다.</p>
+                                    ) : (
+                                        <img src={latestTicket.poster} alt={`${latestTicket.title} 포스터`} />
+                                    )
+                                }
                             </div>
                         </div>
                         <div className="recently-view-info">

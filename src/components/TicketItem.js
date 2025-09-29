@@ -29,7 +29,13 @@ const TicketItem = ({ ticketData, onClick }) => {
             </div>
             <div className="poster-wrap">
                 <div className="poster-box">
-                    <img src={ticketData.poster} alt={`${ticketData.title} 포스터`} />
+                    {
+                        ticketData.poster === '' ? (
+                            <p className="notice">포스터가 없습니다.</p>
+                        ) : (
+                            <img src={ticketData.poster} alt={`${ticketData.title} 포스터`} />
+                        )
+                    }
                 </div>
             </div>
         </div>

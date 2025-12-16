@@ -370,7 +370,7 @@ const Popup = ({ onClose, setTickets, isEdit = false, ticket, onMiniPopupOpen })
                                 }
 
                             </div>
-                            <p className="notice-text">관람한 공연 제목과 관람 일자를 입력하여 검색하세요.<br />검색 후 공연 제목과 공연장이 자동으로 입력되어 표시됩니다.</p>
+                            <p className="notice-text search-notice-text">관람한 공연 제목과 관람 일자를 입력하여 검색하세요.<br />검색 후 공연 제목과 공연장이 자동으로 입력되어 표시됩니다.</p>
                             <div className="form-info-input-wrap">
                                 <div className="poster-img-wrap">
                                     {poster && <img src={poster} alt={title} className='search-poster' />}
